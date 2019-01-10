@@ -35,7 +35,7 @@
 }
 .form-inline{
   display: flex;
-    justify-content: space-between;
+  justify-content: space-between;
 }
 .panel-heading{
   text-align: center;
