@@ -35,10 +35,15 @@
 }
 .form-inline{
   display: flex;
-    justify-content: space-between;
+  justify-content: space-between;
 }
 .panel-heading{
   text-align: center;
+}
+.show-sort{
+  font-size: 18px;
+  background: #5cb85c;
+  margin:15px;
 }
 @keyframes App-logo-spin {
   from {
