@@ -30,8 +30,8 @@ class Search extends Component {
         <div className="input-group">
           <input value={this.state.strSearch} onChange={this.handleChange} type="text" className="form-control" ref="search" placeholder="Search for..."/>
           <span className="input-group-btn">
-          <button onClick={this.handleClear} type="button" className="btn btn-warning">Clear</button>
-            <button onClick={this.handleSearch} type="button" className="btn btn-info">Go!</button>
+          <button onClick={this.handleClear} type="button" className="btn btn-warning">Xóa</button>
+            <button onClick={this.handleSearch} type="button" className="btn btn-info">Go !</button>
           </span>
         </div>
       </div>

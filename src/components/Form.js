@@ -20,7 +20,7 @@ class Form extends Component {
             <form method="POST" className="form-inline">
               <div className="form-group">
                 <label className="sr-only">label</label>
-                <input type="text" className="form-control" placeholder="Task Name" ref="task_name"/>
+                <input type="text" className="form-control" placeholder="Tên bài hát" ref="task_name"/>
               </div>
               <div className="form-group">
                 <label className="sr-only">label</label>
@@ -30,10 +30,10 @@ class Form extends Component {
                   <option value={3}>Small</option>
                 </select>
               </div>
-              <button type="button" className="btn btn-primary">Submit</button>
+              <button type="button" className="btn btn-primary">Thêm</button>
               <button type="button" className="btn btn-default"
                   onClick={this.handleCancle}
-              >Cancel</button>
+              >Đóng</button>
             </form>
           </div>
         </div>
