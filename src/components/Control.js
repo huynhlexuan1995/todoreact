@@ -17,9 +17,9 @@ class Control extends Component {
   }
 
   render() {
-    let elmButton = <button type="button" className="btn btn-info btn-block" onClick={this.handleAdd}>Add Task</button>;
+    let elmButton = <button type="button" className="btn btn-info btn-block" onClick={this.handleAdd}>Thêm vào yêu thích</button>;
     if(this.props.isShowForm){
-      elmButton = <button type="button" className="btn btn-success btn-block" onClick={this.handleAdd}>Close Form</button>
+      elmButton = <button type="button" className="btn btn-success btn-block" onClick={this.handleAdd}>Đóng</button>
     }
     return (
       <div className="row">

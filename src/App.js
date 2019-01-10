@@ -11,9 +11,11 @@ class App extends Component {
     super(props);
     
     this.state={
-        items:items,
-        isShowForm: false,
-        strSearch : '',
+        items       :items,
+        isShowForm  : false,
+        strSearch   : '',
+        orderBy     : 'name',
+        orderDir    : 'asc',
     }
   }
 
@@ -39,7 +41,13 @@ class App extends Component {
     let items       = [];
     let isShowForm  = this.state.isShowForm;
     let elmForm     = null;
+    let {orderBy}     = this.state;
+    let {orderDir}    = this.state;
+
     const search    = this.state.strSearch;
+
+    console.log(orderBy + '-'+ "orderBy");
+
 
     /*
       Items:Abc,Def,Ghj

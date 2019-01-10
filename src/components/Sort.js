@@ -13,18 +13,18 @@ class Sort extends Component {
     return (
       <div className="col-xs-3 col-sm-3 col-md-3 col-lg-3">
         <div className="dropdown">
-          <button type="button" className="btn btn-default dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-            Sort by <span className="caret" />
-          </button>
+          <button className="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+          Sắp xếp<span className="caret"></span></button>
+
           <ul className="dropdown-menu" aria-labelledby="dropdownMenu1">
-            <li><a role="button">Name ASC</a></li>
-            <li><a role="button">Name DESC</a></li>
-            <li role="separator" className="divider"/>
-            <li><a role="button">Level ASC</a></li>
-            <li><a role="button">Level DESC</a></li>
+            <li><a href="button">Name ASC</a></li>
+            <li><a href="button">Name DESC</a></li>
+            <li role="separator" className="divider"></li>
+            <li><a href="button">Level ASC</a></li>
+            <li><a href="button">Level DESC</a></li>
           </ul>
-          <span className="label label-success label-medium">NAME - DESC</span>
-        </div>              
+          <span className="label label-success show-sort">NAME - ASC</span>
+        </div>            
       </div>
     );
   }

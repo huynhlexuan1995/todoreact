@@ -20,13 +20,13 @@ class List extends Component {
     });
     return (
       <div className="panel panel-success">
-        <div className="panel-heading"> List Task</div>
+        <div className="panel-heading">Nhạc Việt</div>
         <table className="table table-hover">
           <thead>
             <tr>
-              <th style={{width: '10%'}} className="text-center">#</th>
-              <th>Task</th>
-              <th style={{width: '20%'}} className="text-center">Level</th>
+              <th style={{width: '10%'}} className="text-center">STT</th>
+              <th>Danh sách bài hát</th>
+              <th style={{width: '20%'}} className="text-center">Độ yêu thích</th>
               <th style={{width: '20%'}} className="text-center">Actions</th>
             </tr>
           </thead>
