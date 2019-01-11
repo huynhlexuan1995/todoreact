@@ -5,7 +5,7 @@ import Control from './components/Control';
 import Form from './components/Form';
 import List from './components/List';
 import items from './mocks/tasks';
-import {filter,includes,orderBy as funOrderBy} from 'lodash';
+import {filter,includes,orderBy as funOrderBy,remove} from 'lodash';
 
 class App extends Component {
   constructor(props){
@@ -18,6 +18,15 @@ class App extends Component {
         orderBy     : 'name', //name or level
         orderDir    : 'asc',
     }
+  }
+
+  handleDelete=(id)=>{
+    remove(this.state.items,(item)=>{
+      return item.id ===id;
+    });
+    this.setState({
+      items:this.state.items
+    })
   }
 
   handleSort=(orderBy,orderDir)=>{
@@ -52,9 +61,6 @@ class App extends Component {
     let {orderBy,orderDir}     = this.state;
 
     const strSearch    = this.state.strSearch;
-
-    console.log(orderBy + '-'+ orderDir);
-
 
     /*
       Items:Abc,Def,Ghj
@@ -100,7 +106,10 @@ class App extends Component {
         {/* FORM : END*/}
 
         {/* LIST : START*/}
-        <List items = {items}/>
+        <List 
+          items = {items}
+          onClickDelete={this.handleDelete}
+        />
       </div>
     );
   }
