@@ -5,7 +5,7 @@ import Control from './components/Control';
 import Form from './components/Form';
 import List from './components/List';
 import items from './mocks/tasks';
-import {filter,includes,orderBy as funOrderBy} from 'lodash';
+import {filter,includes,orderBy as funOrderBy,remove} from 'lodash';
 
 class App extends Component {
   constructor(props){
@@ -21,7 +21,12 @@ class App extends Component {
   }
 
   handleDelete=(id)=>{
-    console.log(id);
+    remove(this.state.items,(item)=>{
+      return item.id ===id;
+    });
+    this.setState({
+      items:this.state.items
+    })
   }
 
   handleSort=(orderBy,orderDir)=>{
