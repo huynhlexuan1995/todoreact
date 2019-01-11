@@ -5,6 +5,7 @@ import Control from './components/Control';
 import Form from './components/Form';
 import List from './components/List';
 import items from './mocks/tasks';
+import _ from 'lodash';
 
 class App extends Component {
   constructor(props){
@@ -61,15 +62,12 @@ class App extends Component {
       Output: Abc
      */
 
-    if(strSearch.length>0){
-      itemsOrigin.forEach((item) => {
-        if(item.name.toLowerCase().indexOf(strSearch) !== -1){
-          items.push(item);
-        }
-      });
-    }else{
-      items = itemsOrigin;
-    }
+
+    // Sử dụng thư viện lodash
+    items = _.filter(itemsOrigin,(item) => { 
+        
+        return _.includes(item.name.toLowerCase(), strSearch);
+    });
 
 
     if(isShowForm){
