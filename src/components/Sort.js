@@ -37,10 +37,10 @@ class Sort extends Component {
                 this.state.showMenu
                 ?(
                   <div className="dropdown" aria-labelledby="dropdownMenu2">
-                    <button onClick={()=>this.handleSort('Name','ASC')} className="btn btn-defautl dropdown-item" type="button">Name - ASC</button>
-                    <button onClick={()=>this.handleSort('Name','DESC')} className="btn btn-defautl dropdown-item" type="button">Name - DESC</button>
-                    <button onClick={()=>this.handleSort('Level','ASC')} className="btn btn-defautl dropdown-item" type="button">Level - ASC</button>
-                    <button onClick={()=>this.handleSort('Level','DESC')} className="btn btn-defautl dropdown-item" type="button">Level - DESC</button>
+                    <button onClick={()=>this.handleSort('name','asc')} className="btn btn-defautl dropdown-item" type="button">Name - ASC</button>
+                    <button onClick={()=>this.handleSort('name','desc')} className="btn btn-defautl dropdown-item" type="button">Name - DESC</button>
+                    <button onClick={()=>this.handleSort('level','asc')} className="btn btn-defautl dropdown-item" type="button">Level - ASC</button>
+                    <button onClick={()=>this.handleSort('level','desc')} className="btn btn-defautl dropdown-item" type="button">Level - DESC</button>
                   </div>
                 )
                 : (

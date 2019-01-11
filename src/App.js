@@ -5,6 +5,7 @@ import Control from './components/Control';
 import Form from './components/Form';
 import List from './components/List';
 import items from './mocks/tasks';
+import {filter,includes,orderBy as funOrderBy} from 'lodash';
 
 class App extends Component {
   constructor(props){
@@ -14,8 +15,8 @@ class App extends Component {
         items       :items,
         isShowForm  : false,
         strSearch   : '',
-        orderBy     : 'Level',
-        orderDir    : 'ASC',
+        orderBy     : 'name', //name or level
+        orderDir    : 'asc',
     }
   }
 
@@ -61,15 +62,16 @@ class App extends Component {
       Output: Abc
      */
 
-    if(strSearch.length>0){
-      itemsOrigin.forEach((item) => {
-        if(item.name.toLowerCase().indexOf(strSearch) !== -1){
-          items.push(item);
-        }
-      });
-    }else{
-      items = itemsOrigin;
-    }
+
+    // Sử dụng thư viện lodash search
+    items = filter(itemsOrigin,(item) => { 
+        
+        return includes(item.name.toLowerCase(), strSearch);
+    });
+
+    //lodash for sort
+    items = funOrderBy(items,[orderBy],[orderDir]);
+
 
 
     if(isShowForm){
