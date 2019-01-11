@@ -5,6 +5,7 @@ import Control from './components/Control';
 import Form from './components/Form';
 import List from './components/List';
 import items from './mocks/tasks';
+import {filter,includes,orderBy as funOrderBy,remove} from 'lodash';
 
 class App extends Component {
   constructor(props){
@@ -14,9 +15,25 @@ class App extends Component {
         items       :items,
         isShowForm  : false,
         strSearch   : '',
-        orderBy     : 'name',
+        orderBy     : 'name', //name or level
         orderDir    : 'asc',
     }
+  }
+
+  handleDelete=(id)=>{
+    remove(this.state.items,(item)=>{
+      return item.id ===id;
+    });
+    this.setState({
+      items:this.state.items
+    })
+  }
+
+  handleSort=(orderBy,orderDir)=>{
+    this.setState({
+      orderBy:orderBy,
+      orderDir:orderDir,
+    });
   }
 
   handleToggleForm=()=>{
@@ -41,13 +58,9 @@ class App extends Component {
     let items       = [];
     let isShowForm  = this.state.isShowForm;
     let elmForm     = null;
-    let {orderBy}     = this.state;
-    let {orderDir}    = this.state;
+    let {orderBy,orderDir}     = this.state;
 
-    const search    = this.state.strSearch;
-
-    console.log(orderBy + '-'+ "orderBy");
-
+    const strSearch    = this.state.strSearch;
 
     /*
       Items:Abc,Def,Ghj
@@ -55,15 +68,16 @@ class App extends Component {
       Output: Abc
      */
 
-    if(search.length>0){
-      itemsOrigin.forEach((item) => {
-        if(item.name.toLowerCase().indexOf(search) !== -1){
-          items.push(item);
-        }
-      });
-    }else{
-      items = itemsOrigin;
-    }
+
+    // Sử dụng thư viện lodash search
+    items = filter(itemsOrigin,(item) => { 
+        
+        return includes(item.name.toLowerCase(), strSearch);
+    });
+
+    //lodash for sort
+    items = funOrderBy(items,[orderBy],[orderDir]);
+
 
 
     if(isShowForm){
@@ -77,6 +91,9 @@ class App extends Component {
 
         {/* CONTROL(SEARCH + SORT + ADD)  : START*/}
         <Control 
+          orderBy={orderBy}
+          orderDir={orderDir}
+          onClickSort={this.handleSort}
           onClickAdd={this.handleToggleForm}
           isShowForm={isShowForm}
           onClickSearchGo={this.handleSearch}
@@ -89,7 +106,10 @@ class App extends Component {
         {/* FORM : END*/}
 
         {/* LIST : START*/}
-        <List items = {items}/>
+        <List 
+          items = {items}
+          onClickDelete={this.handleDelete}
+        />
       </div>
     );
   }

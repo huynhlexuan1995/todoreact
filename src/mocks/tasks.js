@@ -12,13 +12,13 @@ let items = [
 	},
 	{
 		id	: uuidv4(),
-		name: "Áo anh đứt khuy em có thể khâu lại được nhưng tình yêu càng khâu thì con đường đôi ta đi càng ngược",
+		name: "Ao anh đứt khuy em có thể khâu lại được nhưng tình yêu càng khâu thì con đường đôi ta đi càng ngược",
 		level: 2 //Small, 1 Medium, 2 High
 	},
 	{
 		id	: uuidv4(),
 		name: "Không Cần Phải Hứa Đâu Em - Phạm Khánh Hưng",
-		level: 2 //Small, 1 Medium, 2 High
+		level: 0 //Small, 1 Medium, 2 High
 	},
 	{
 		id	: uuidv4(),

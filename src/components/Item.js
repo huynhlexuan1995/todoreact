@@ -9,6 +9,10 @@ class Item extends Component {
     }
   }
 
+  handleDelete = (id) =>{
+    this.props.onClickDelete(id);
+  }
+
   showElmLevel(level){
     let elmLevel = <span className="label label-info">Medium</span>;
     if(level === 0){
@@ -30,7 +34,7 @@ class Item extends Component {
         <td className="text-center">{this.showElmLevel(item.level)}</td>
         <td className="text-center">
           <button type="button" className="btn btn-warning">Edit</button>
-          <button type="button" className="btn btn-danger">Delete</button>
+          <button onClick={()=>this.handleDelete(item.id)} type="button" className="btn btn-danger">Delete</button>
         </td>
       </tr>
     );
