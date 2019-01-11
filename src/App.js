@@ -20,6 +20,10 @@ class App extends Component {
     }
   }
 
+  handleDelete=(id)=>{
+    console.log(id);
+  }
+
   handleSort=(orderBy,orderDir)=>{
     this.setState({
       orderBy:orderBy,
@@ -52,9 +56,6 @@ class App extends Component {
     let {orderBy,orderDir}     = this.state;
 
     const strSearch    = this.state.strSearch;
-
-    console.log(orderBy + '-'+ orderDir);
-
 
     /*
       Items:Abc,Def,Ghj
@@ -100,7 +101,10 @@ class App extends Component {
         {/* FORM : END*/}
 
         {/* LIST : START*/}
-        <List items = {items}/>
+        <List 
+          items = {items}
+          onClickDelete={this.handleDelete}
+        />
       </div>
     );
   }
