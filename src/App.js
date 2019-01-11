@@ -6,18 +6,33 @@ import Form from './components/Form';
 import List from './components/List';
 import items from './mocks/tasks';
 import {filter,includes,orderBy as funOrderBy,remove} from 'lodash';
+const uuidv4 = require('uuid/v4');
 
 class App extends Component {
   constructor(props){
     super(props);
     
     this.state={
-        items       :items,
+        items       : items,
         isShowForm  : false,
         strSearch   : '',
         orderBy     : 'name', //name or level
         orderDir    : 'asc',
     }
+  }
+
+  handleSubmit=(item)=>{
+    console.log(item);
+    let {items} = this.state;
+    items.push({
+      id  : uuidv4(),
+      name: item.name,
+      level: +item.level
+    });
+    this.setState({
+      items : items,
+      isShowForm:false
+    });
   }
 
   handleDelete=(id)=>{
@@ -81,7 +96,7 @@ class App extends Component {
 
 
     if(isShowForm){
-      elmForm = <Form onClickClose={this.closeForm}/>
+      elmForm = <Form onClickSubmit={this.handleSubmit} onClickClose={this.closeForm}/>
     }
     return (
       <div>
