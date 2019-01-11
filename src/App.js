@@ -14,9 +14,16 @@ class App extends Component {
         items       :items,
         isShowForm  : false,
         strSearch   : '',
-        orderBy     : 'name',
-        orderDir    : 'asc',
+        orderBy     : 'Level',
+        orderDir    : 'ASC',
     }
+  }
+
+  handleSort=(orderBy,orderDir)=>{
+    this.setState({
+      orderBy:orderBy,
+      orderDir:orderDir,
+    });
   }
 
   handleToggleForm=()=>{
@@ -41,12 +48,11 @@ class App extends Component {
     let items       = [];
     let isShowForm  = this.state.isShowForm;
     let elmForm     = null;
-    let {orderBy}     = this.state;
-    let {orderDir}    = this.state;
+    let {orderBy,orderDir}     = this.state;
 
-    const search    = this.state.strSearch;
+    const strSearch    = this.state.strSearch;
 
-    console.log(orderBy + '-'+ "orderBy");
+    console.log(orderBy + '-'+ orderDir);
 
 
     /*
@@ -55,9 +61,9 @@ class App extends Component {
       Output: Abc
      */
 
-    if(search.length>0){
+    if(strSearch.length>0){
       itemsOrigin.forEach((item) => {
-        if(item.name.toLowerCase().indexOf(search) !== -1){
+        if(item.name.toLowerCase().indexOf(strSearch) !== -1){
           items.push(item);
         }
       });
@@ -77,6 +83,9 @@ class App extends Component {
 
         {/* CONTROL(SEARCH + SORT + ADD)  : START*/}
         <Control 
+          orderBy={orderBy}
+          orderDir={orderDir}
+          onClickSort={this.handleSort}
           onClickAdd={this.handleToggleForm}
           isShowForm={isShowForm}
           onClickSearchGo={this.handleSearch}

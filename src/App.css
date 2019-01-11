@@ -40,10 +40,22 @@
 .panel-heading{
   text-align: center;
 }
-.show-sort{
-  font-size: 18px;
+.dropdown-item{
+  display: block;
+  width: 150px;
+  text-align: left;
+  background: white;
+  position: relative;
+  padding: 10px 20px;
+  border-bottom: 1px solid #c8ced3;
+}
+.sort-name{
+  float: left;
+  margin-left: 65px;
+  font-size: 24px;
   background: #5cb85c;
-  margin:15px;
+  border-radius: 5px;
+  text-align: center;
 }
 @keyframes App-logo-spin {
   from {
