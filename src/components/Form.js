@@ -4,11 +4,24 @@ class Form extends Component {
   constructor(props){
     super(props);
     this.state={
+      task_id:'',
       task_name:'',
       task_level: 0,
-    }
+    };
+
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
+  }
+
+  componentWillMount(){
+    let item = this.props.itemSelected;
+    if(item.id !== ''){
+      this.setState({
+        task_id:item.id,
+        task_name:item.name,
+        task_level:item.level,
+      });
+    }
   }
 
   handleChange(event){
@@ -23,8 +36,9 @@ class Form extends Component {
 
   handleSubmit(event){
     let item = {
-      name: this.state.task_name,
-      level:this.state.task_level
+      id    :this.state.task_id,
+      name  :this.state.task_name,
+      level :this.state.task_level
     };
     this.props.onClickSubmit(item);
     event.preventDefault();
@@ -35,6 +49,7 @@ class Form extends Component {
   }
 
   render() {
+    
     return (
       <div className="row">
           <div className="col-md-offset-7 col-md-5">
