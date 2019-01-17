@@ -6,18 +6,50 @@ import Form from './components/Form';
 import List from './components/List';
 import items from './mocks/tasks';
 import {filter,includes,orderBy as funOrderBy,remove} from 'lodash';
+const uuidv4 = require('uuid/v4');
 
 class App extends Component {
   constructor(props){
     super(props);
     
     this.state={
-        items       :items,
+        items       : items,
         isShowForm  : false,
         strSearch   : '',
         orderBy     : 'name', //name or level
         orderDir    : 'asc',
+        itemSelected:null
     }
+  }
+
+  handleSubmit=(item)=>{
+    let {items} = this.state;
+    if(item.id !== ''){ //edit
+      //cap nhap lai item 
+      items.forEach((elm,key) => {
+        if(elm.id === item.id){
+          items[key].name = item.name;
+          items[key].level = +item.level;
+        }
+      });
+    }else{ //add
+      items.push({
+        id  : uuidv4(),
+        name: item.name,
+        level: +item.level
+      });
+    }
+    this.setState({
+      items : items,
+      isShowForm:false
+    });
+  }
+
+  handleEdit=(item)=>{
+    this.setState({
+      itemSelected:item,
+      isShowForm:true
+    })
   }
 
   handleDelete=(id)=>{
@@ -81,7 +113,7 @@ class App extends Component {
 
 
     if(isShowForm){
-      elmForm = <Form onClickClose={this.closeForm}/>
+      elmForm = <Form itemSelected={this.state.itemSelected} onClickSubmit={this.handleSubmit} onClickClose={this.closeForm}/>
     }
     return (
       <div>
@@ -109,6 +141,7 @@ class App extends Component {
         <List 
           items = {items}
           onClickDelete={this.handleDelete}
+          onClickEdit={this.handleEdit}
         />
       </div>
     );

@@ -20,6 +20,7 @@ class List extends Component {
           item={item} 
           index={index}
           onClickDelete={this.props.onClickDelete}
+          onClickEdit = {this.props.onClickEdit}
         />
       );
     });
