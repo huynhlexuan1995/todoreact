@@ -70,6 +70,7 @@ class App extends Component {
 
   handleToggleForm=()=>{
     this.setState({
+      itemSelected : null,
       isShowForm:!this.state.isShowForm
     });
   }
